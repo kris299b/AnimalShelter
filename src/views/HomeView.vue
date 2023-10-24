@@ -1,5 +1,6 @@
 <script setup>
 
+
 const cookieBox = document.querySelector(".wrapper"),
   buttons = document.querySelectorAll(".button");
 const executeCodes = () => {
