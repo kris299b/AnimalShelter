@@ -2,6 +2,7 @@
 <nav class="bg-blue-400 dark:bg-blue-400">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl mx-2 py-2 md:mx-3 md:py-1 lg:mx-5 lg:py-0">
         <a href="" class="flex items-center">
+          
           <RouterLink to="/"> <img src="../src/assets/logo.png" class="h-8 mr-3 md:h-12 lg:h-12" alt="" /></RouterLink>
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
         </a>
