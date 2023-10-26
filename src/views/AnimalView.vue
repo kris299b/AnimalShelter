@@ -9,8 +9,6 @@
             <input type="text" class="text-black" placeholder="Animal name" v-model="AddAnimalData.animalName"> 
         </div>
      
-  
-  
       <div v-for="animal in animals" :key="animals">
         <p>
           AnimalID: {{ animal.id  }}
