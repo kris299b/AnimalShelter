@@ -52,24 +52,6 @@
 </nav>
 <RouterView />
 
-<!-- cookie banner - html -->
-
-<!-- <div id="app"> 
-    <div class="wrapper">
-        <header>
-          <i class="bx bx-cookie"></i>
-          <h2>Du bestemmer over dine data</h2>
-        </header>
-        <div class="data">
-          <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
-        </div>
-        <div class="buttons">
-          <button class="button" id="acceptBtn">Accepter</button>
-          <button class="button" id="declineBtn">Afvis</button>
-        </div>
-    </div> 
-    <CookieBanner /> 
-</div> -->
 
 
 <footer class="bg-blue-400 dark:bg-blue-400">
@@ -112,13 +94,6 @@ import { initCustomFormatter, onMounted, ref } from 'vue' //onMounted = når vi 
 import { auth } from './firebase.js'
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 
-// import CookieBanner from './components/CookieBanner.vue'; 
-
-// export default {
-//   components: {
-//     CookieBanner, // Hvorfor virker det ikke ?
-//   },
-// };
 
 let isLoggedIn = ref(false) 
 

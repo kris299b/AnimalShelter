@@ -1,25 +1,12 @@
-<script setup>
+<script>
 
-// //cookie javascript
-// const cookieBox = document.querySelector(".wrapper"),
-//   buttons = document.querySelectorAll(".button");
-// const executeCodes = () => {
-//   //if cookie contains codinglab it will be returned and below of this code will not run
-//   if (document.cookie.includes("codinglab")) return;
-//   cookieBox.classList.add("show");
-//   buttons.forEach((button) => {
-//     button.addEventListener("click", () => {
-//       cookieBox.classList.remove("show");
-//       //if button has acceptBtn id
-//       if (button.id == "acceptBtn") {
-//         //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
-//         document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
-//       }
-//     });
-//   });
-// };
-// //executeCodes function will be called on webpage load
-// window.addEventListener("load", executeCodes);
+import CookieBanner from '../components/CookieBanner.vue';
+
+export default {
+  components: {
+    CookieBanner,
+  },
+};
 
 </script>
 
@@ -39,6 +26,21 @@
         </button>
     </div>
 </section>
+
+<div class="wrapper">
+    <header>
+      <i class="bx bx-cookie"></i>
+      <h2>Du bestemmer over dine data</h2>
+    </header>
+    <div class="data">
+      <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
+    </div>
+    <div class="buttons">
+      <button class="button" id="acceptBtn">Accepter</button>
+      <button class="button" id="declineBtn">Afvis</button>
+    </div>
+    <CookieBanner /> <!-- Her inkluderer vi CookieBanner komponentet -->
+  </div>
 
 <section class="bg-stone-50 dark:bg-stone-50">
   <div class="py-5 px-4 mx-auto max-w-screen-xl text-center lg:py-10 lg:px-20">
@@ -114,7 +116,6 @@
 </div>
 
 
-
 </template>
 
 
@@ -146,6 +147,7 @@
 #circle {
     border:4px solid #60a5fa;
 }
+
 
 
 </style>

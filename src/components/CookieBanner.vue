@@ -1,17 +1,18 @@
 <template>
 <!-- Cookie Banner area-->
+
 <div class="wrapper">
-      <header>
-        <i class="bx bx-cookie"></i>
-        <h2>Du bestemmer over dine data</h2>
-      </header>
-      <div class="data">
-        <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
-      </div>
-      <div class="buttons">
-        <button class="button" id="acceptBtn">Accepter</button>
-        <button class="button" id="declineBtn">Afvis</button>
-      </div>
+    <header>
+      <i class="bx bx-cookie"></i>
+      <h2>Du bestemmer over dine data</h2>
+    </header>
+    <div class="data">
+      <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
+    </div>
+    <div class="buttons">
+      <button class="button" id="acceptBtn">Accepter</button>
+      <button class="button" id="declineBtn">Afvis</button>
+    </div>
 </div>
 
 </template>
@@ -95,7 +96,9 @@ header h2 {
 
 <script>
 
-// cookie javascript
+export default {
+  mounted() {
+   // cookie javascript
 const cookieBox = document.querySelector(".wrapper"),
   buttons = document.querySelectorAll(".button");
 const executeCodes = () => {
@@ -115,6 +118,8 @@ const executeCodes = () => {
 };
 //executeCodes function will be called on webpage load
 window.addEventListener("load", executeCodes);
+  },
+};
 
 
 </script>
