@@ -1,24 +1,25 @@
 <script setup>
 
-const cookieBox = document.querySelector(".wrapper"),
-  buttons = document.querySelectorAll(".button");
-const executeCodes = () => {
-  //if cookie contains codinglab it will be returned and below of this code will not run
-  if (document.cookie.includes("codinglab")) return;
-  cookieBox.classList.add("show");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      cookieBox.classList.remove("show");
-      //if button has acceptBtn id
-      if (button.id == "acceptBtn") {
-        //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
-        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
-      }
-    });
-  });
-};
-//executeCodes function will be called on webpage load
-window.addEventListener("load", executeCodes);
+// //cookie javascript
+// const cookieBox = document.querySelector(".wrapper"),
+//   buttons = document.querySelectorAll(".button");
+// const executeCodes = () => {
+//   //if cookie contains codinglab it will be returned and below of this code will not run
+//   if (document.cookie.includes("codinglab")) return;
+//   cookieBox.classList.add("show");
+//   buttons.forEach((button) => {
+//     button.addEventListener("click", () => {
+//       cookieBox.classList.remove("show");
+//       //if button has acceptBtn id
+//       if (button.id == "acceptBtn") {
+//         //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
+//         document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+//       }
+//     });
+//   });
+// };
+// //executeCodes function will be called on webpage load
+// window.addEventListener("load", executeCodes);
 
 </script>
 
@@ -31,8 +32,8 @@ window.addEventListener("load", executeCodes);
         </video>
     </div>
     <div class="video-content z-10">
-        <h4 class="font-white text-4xl md:text-6xl lg:text-6xl py-1">MY LAST HOME</h4>
-        <p class="font-white text-1xl md:text-2xl lg:text-xl italic">Din nye bedste ven venter på dig</p>
+        <h4 class="text-white text-4xl md:text-6xl lg:text-6xl py-1">MY LAST HOME</h4>
+        <p class="text-white text-1xl md:text-2xl lg:text-xl italic">Din nye bedste ven venter på dig</p>
         <button class="mt-5 bg-blue-400 hover:bg-transparent text-white font-semibold hover:text-white py-2 px-4 border border-blue-400 hover:border-white">
             ADOPTER NU
         </button>
@@ -42,7 +43,7 @@ window.addEventListener("load", executeCodes);
 <section class="bg-stone-50 dark:bg-stone-50">
   <div class="py-5 px-4 mx-auto max-w-screen-xl text-center lg:py-10 lg:px-20">
       <div class="mx-auto mb-8 max-w-screen-sm lg:mb-10">
-        <h2 class="text-black md:text-2xl lg:text-2xl">Se hvilke dyr der er klar til <span style="color:#60a5fa"> adoption</span></h2>
+        <h2 class="text-black text-xl md:text-2xl lg:text-2xl">Se hvilke dyr der er klar til <span style="color:#60a5fa"> adoption</span></h2>
       </div> 
       <div class="grid gap-8 lg:gap-0 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
           <div class="text-center text-gray-500 dark:text-gray-400">
