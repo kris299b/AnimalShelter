@@ -1,6 +1,5 @@
 <template>
 <!-- Cookie Banner area-->
-
 <div class="wrapper">
     <header>
       <i class="bx bx-cookie"></i>
@@ -18,7 +17,7 @@
 </template>
 
 
-<style scoped>
+<style>
 /* cookie css */
 .wrapper {
   position: fixed;
