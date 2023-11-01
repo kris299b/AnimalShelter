@@ -1,5 +1,5 @@
-<template>
 
+<template>
 <div class="bg-stone-50 dark:bg-stone-50">
   <div class="bg-stone-50 dark:bg-stone-50 text-center">
     <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
@@ -18,9 +18,6 @@
             <div class="animal-info">
             <p class="animal-name mx-4 pt-2 text-stone-50 lg:text-lg"> {{ animal.animalName }}</p>
             <p class="animal-price mx-4  pb-2 text-stone-50 "> {{ animal.animalPrice.toFixed(2) }}</p>
-            <!-- <div class="animal-actions">
-              <input type="text" class="input-field" placeholder="New name" v-model="animal.animalName">
-            </div> -->
             <div class="py-3">
               <p class="text-stone-50 mx-4"> Den sidste hvalp af et kuld på 7 er nu klar til at blive adopteret.</p>
               <p class="text-stone-50 mx-4 my-2">Læs mere..</p>
@@ -45,10 +42,7 @@
 </div>
 </div>
 
-
-
-</template>
-  
+</template> 
    
 <script setup>
   
@@ -117,4 +111,4 @@ onMounted(() => {
 .animal-price {
   font-style: italic;
 }
-  </style>
+  </style>   

@@ -1,124 +1,61 @@
 <template>
-<!-- Cookie Banner area-->
-<div class="wrapper">
-    <header>
-      <i class="bx bx-cookie"></i>
-      <h2>Du bestemmer over dine data</h2>
-    </header>
-    <div class="data">
-      <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
+  <div v-if="showCookieBanner" class="cookie-banner">
+    <div class="flex">
+      <i class="bx bx-cookie py-5 px-4"></i>
+      <p class="text-lg py-4">Vi bruger cookies</p> 
     </div>
-    <div class="buttons">
-      <button class="button" id="acceptBtn">Accepter</button>
-      <button class="button" id="declineBtn">Afvis</button>
+    <div>
+      <p class="px-5">Vi bruger cookies for at kunne give dig personligt tilpasset indhold og for at optimere markedsføringen i overensstemmelse med dine interesser. Oplysningerne identificerer dig normalt ikke direkte, men de kan give dig en mere personlig weboplevelse. Fordi vi respekterer din ret til privatliv, kan du vælge ikke at tillade nogle typer cookies. Klik på de forskellige kategorioverskrifter for at finde ud af mere om de cookies, vi bruger, og for at ændre indstillinger. Blokering af nogle typer cookies kan dog påvirke din oplevelse af de onlinetjenester, vi kan tilbyde.</p>
     </div>
-</div>
-
+    <div class="text-end px-5">
+      <button class="bg-blue-400" @click="acceptCookies">Accept</button>
+      <button class="" @click="declineCookies">Decline</button>
+    </div>
+  </div>
 </template>
 
+<script setup>
+import { ref } from 'vue';
 
-<style>
-/* cookie css */
-.wrapper {
+const showCookieBanner = ref(!document.cookie.includes('cookies_accepted=true'));
+
+const acceptCookies = () => {
+  // Set a cookie to track user's consent
+  document.cookie = "cookies_accepted=true; expires=Sun, 31 Dec 2099 23:59:59 UTC; path=/";
+
+  showCookieBanner.value = false;
+  console.log("test: ", showCookieBanner)
+};
+
+const declineCookies = () => {
+  // Handle the user declining cookies if needed
+  showCookieBanner.value = false; // Hide the banner
+};
+</script>
+
+<style scoped>
+.cookie-banner {
   position: fixed;
-  bottom: 50px;
-  right: -370px;
-  max-width: 345px;
-  width: 100%;
-  background:white;
-  padding: 15px 25px 22px;
-  transition: right 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.wrapper.show {
-  right: 20px;
-}
-.wrapper header {
-  display: flex;
-  align-items: center;
-  column-gap: 15px;
-}
-header i {
-  color: #60a5fa; 
-  font-size: 32px;
-}
-header h2 {
-  color:#60a5fa; 
-  font-weight: 500;
-}
-.wrapper .data {
-  margin-top: 16px;
-}
-.wrapper .data p {
-  color: #333;
-  font-size: 16px;
-}
-.data p a {
-  color: #4070f4;
-  text-decoration: none;
-}
-.data p a:hover {
-  text-decoration: underline;
-}
-.wrapper .buttons {
-  margin-top: 16px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.buttons .button {
-  border: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #33333379;
   color: #fff;
-  padding: 8px 0;
-  background:#60a5fa; 
-  cursor: pointer;
-  width: calc(100% / 2 - 10px);
-  transition: all 0.2s ease;
-}
-.buttons #acceptBtn:hover {
-  background-color: #60a5fa; 
-}
-#declineBtn {
-  border: 2px solid #60a5fa; 
-  background-color: #fff;
-  color: #60a5fa; 
-}
-#declineBtn:hover {
-  background-color: #4070f4;
-  color: #fff;
+  padding: 10px;
+  z-index: 89745899;
 }
 
+button {
+  border: none;
+  padding: 10px 30px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+i {
+  font-size: 25px;
+}
 </style>
 
 
 
-<script>
-
-export default {
-  mounted() {
-   // cookie javascript
-const cookieBox = document.querySelector(".wrapper"),
-  buttons = document.querySelectorAll(".button");
-const executeCodes = () => {
-  //if cookie contains codinglab it will be returned and below of this code will not run
-  if (document.cookie.includes("codinglab")) return;
-  cookieBox.classList.add("show");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      cookieBox.classList.remove("show");
-      //if button has acceptBtn id
-      if (button.id == "acceptBtn") {
-        //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
-        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
-      }
-    });
-  });
-};
-//executeCodes function will be called on webpage load
-window.addEventListener("load", executeCodes);
-  },
-};
-
-
-</script>

@@ -41,6 +41,9 @@
                   <RouterLink to="adoption">ADOPTION</RouterLink>
                 </li>
                 <li>
+                  <RouterLink to="admin">ADMIN</RouterLink>
+                </li>
+                <li>
                   <RouterLink to="register">OPRET BRUGER</RouterLink>
                 </li>
                 <li>  

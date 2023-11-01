@@ -1,16 +1,4 @@
-<script>
 
-import CookieBanner from '../components/CookieBanner.vue'; //This line of code imports a Vue.js component named CookieBanner from a file located at '../components/CookieBanner.vue'.
-import Newsletter from '../components/Newsletter.vue'; //This line of code imports a Vue.js component named Newsletter from a file located af '../components/Newsletter.vue'.
-
-export default { //This is a standard export statement in JavaScript that exports an object as the default export from the current module. In this case, the exported object is used to configure the Vue component.
-  components: {
-    CookieBanner,
-    Newsletter
-  },
-};
-
-</script>
 
 <template>
 <section class="relative h-screen flex flex-col items-center py-20 text-center content-start text-white">
@@ -29,62 +17,18 @@ export default { //This is a standard export statement in JavaScript that export
     </div>
 </section>
 
-<!-- Cookiebanner -->
-<div class="wrapper">
-    <header>
-      <i class="bx bx-cookie"></i>
-      <h2>Du bestemmer over dine data</h2>
-    </header>
-    <div class="data">
-      <p>Vi og vores samarbejdspartnere bruger teknologier, herunder cookies, til at indsamle oplysninger om dig <a href="#"> Læs mere..</a></p>
-    </div>
-    <div class="buttons">
-      <button class="button" id="acceptBtn">Accepter</button>
-      <button class="button" id="declineBtn">Afvis</button>
-    </div>
+<div>
+    <CookieBanner />
 </div>
-
 
 
 <div class="bg-stone-50 pt-12">
-    <p class="text-black text-center lg:text-3xl">NYHEDSBREV</p>
+    <p class="text-black text-center lg:text-3xl">Nyhedsbrev</p>
 </div>
 
-
-<!-- Newsletter -->
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12 bg-stone-50 dark:stone-50">
-        <div class="col-span-2">
-            <img class="" src="../assets/newsletter-image.jpg" alt="">
-        </div>
-        <div class="bg-stone-50 dark:bg-stone-50 pl-10 pt-5 pb-5">
-<div class="w-80" id="mc_embed_shell">
-    <p class="text-black ml-5 text-lg">TILMELD DIG HER</p>
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-<div id="mc_embed_signup">
-    <form action="https://easv365.us21.list-manage.com/subscribe/post?u=059ec60e17402edab569df5d1&amp;id=ca710ff564&amp;v_id=192&amp;f_id=0052e9e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <div class="indicates-required text-black"><span class="asterisk">*</span> påkrævet</div>
-            <div class="mc-field-group text-black"><label for="mce-EMAIL">Email <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group text-black"><label for="mce-FNAME">Fornavn <span class="asterisk">*</span></label><input type="text" name="FNAME" class="required text" id="mce-FNAME" required="" value=""></div><div class="mc-field-group text-black"><label for="mce-LNAME">Efternavn </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div><div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group"><div class="content__gdpr"><label>Marketingstilladelser</label><p>Vælg venligst måden du gerne vil høre fra MYLASTHOME herunder:</p><fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field"><label class="checkbox subfield" for="gdpr97701"><input type="checkbox" id="gdpr_97701" name="gdpr[97701]" class="gdpr" value="Y"><span>Email</span></label><label class="checkbox subfield" for="gdpr97704"><input type="checkbox" id="gdpr_97704" name="gdpr[97704]" class="gdpr" value="Y"><span>sms</span></label><label class="checkbox subfield" for="gdpr97705"><input type="checkbox" id="gdpr_97705" name="gdpr[97705]" class="gdpr" value="Y"><span>Begge</span></label></fieldset><p>Du kan til hver en tid afmelde nyhedsbrevet ved at klikke på linket i bunden af de mails vi sender ud. </p></div><div class="content__gdprLegal"></div></div>
-        <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-        <input type="text" name="b_059ec60e17402edab569df5d1_ca710ff564" tabindex="-1" value="">
-    </div>
-        <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Tilmeld dig">
-                <p style="margin: 0px auto;"><a href="http://eepurl.com/iCZR_c" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-            </div>
-        </div>
-    </div>
-</form>
+<div>
+    <Newsletter />
 </div>
-</div>
-</div>
-   </div>
 
 
 
@@ -163,7 +107,12 @@ export default { //This is a standard export statement in JavaScript that export
 
 </template>
 
+<script setup>
 
+import CookieBanner from '../components/CookieBanner.vue'; //This line of code imports a Vue.js component named CookieBanner from a file located at '../components/CookieBanner.vue'.
+import Newsletter from '../components/Newsletter.vue'; //This line of code imports a Vue.js component named Newsletter from a file located af '../components/Newsletter.vue'.
+
+</script>
 
 <style>
 .video-docker video {
