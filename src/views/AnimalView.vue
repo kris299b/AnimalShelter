@@ -4,19 +4,20 @@
     <div class="bg-stone-50 dark:bg-stone-50">
       <div class="bg-stone-50 dark:bg-stone-50 text-center">
         <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
+        <p class="text-black text-1xl md:text-2xl lg:text-xl italic">Din nye bedste ven venter på dig</p>
       </div>
 
-      <div class="bg-stone-50 dark:bg-stone-50 flex flex-row lg:py-20 px-3 ">
-        <div v-for="animal in animals" :key="animal">
-        <p class="text-black" v-html="animal.name"></p>
-        <p class="text-black" v-html="animal.price"></p>
-        <img :src="animal.imgURL" alt="post image" width="200" height="200">
-    
-        <!-- <p class="text-black">PostID: {{animal.id}}</p> -->
+      <div class="bg-stone-50 dark:bg-stone-50 flex flex-row lg:py-20 px-3">
+          <div class="px-20" v-for="animal in animals" :key="animal">
+            <img :src="animal.imgURL" alt="post image" width="200" height="200">
+            <div class="py-3">
+                <p class="text-black font-bold text-lg" v-html="animal.name"></p>
+                <p class="text-black pb-3 font-semibold text-md" v-html="animal.price"></p>
+                <a href=""><p class="text-blue-400 text-md font-semibold">Læs mere</p></a>
+            </div>
+          </div>
       </div>
-      </div>
-
-      </div>
+    </div>
 
   
       <!-- <div v-if="uploadBtnDisabled">
