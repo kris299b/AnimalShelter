@@ -3,17 +3,17 @@
     <div>
       <div class="bg-stone-50 dark:bg-stone-50">
         <div class="bg-stone-50 dark:bg-stone-50 text-center">
-          <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
+          <p class="text-center text-black pt-12 pb-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
         </div>
 
         <div>
           <div v-for="animal in animals" :key="animal">
-          <p v-html="animal.title"></p>
-          <p v-html="animal.description"></p>
-          <p v-html="animal.imgURL"></p>
+          <p class="text-black" v-html="animal.name"></p>
+          <p class="text-black" v-html="animal.price"></p>
           <img :src="animal.imgURL" alt="post image" width="200" height="200">
+          <button class="bg-transparent border border-black text-black font-bold py-2 px-4" @click="deleteAnimal(animal.id)">SLET</button>
       
-          <p>PostID: {{animal.id}}</p>
+          <!-- <p class="text-black">PostID: {{animal.id}}</p> -->
         </div>
         </div>
 
@@ -46,8 +46,26 @@
   import { onMounted , reactive} from 'vue';
   import { db } from '../firebase.js';
   import useAnimals from '../modules/useAnimals.js';
+  import { deleteDoc, doc } from 'firebase/firestore'; // Import necessary Firestore functions
 
 const { animals, getAnimalsData } = useAnimals();
+
+const AnimalsCollectionRef = collection(db, 'animals'); // Assuming 'db' is your Firestore database reference
+
+const deleteAnimal = async (id) => {
+  try {
+    // Create a reference to the document to be deleted
+    const animalRef = doc(AnimalsCollectionRef, id);
+    
+    // Delete the document
+    await deleteDoc(animalRef);
+
+    console.log(`Document with ID ${id} successfully deleted.`);
+  } catch (error) {
+    console.error(`Error deleting document: ${error}`);
+  }
+}
+
 
 onMounted(() => {
   getAnimalsData();

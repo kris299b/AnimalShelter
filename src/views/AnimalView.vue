@@ -1,87 +1,128 @@
 <template>
+
   <div>
     <div class="bg-stone-50 dark:bg-stone-50">
       <div class="bg-stone-50 dark:bg-stone-50 text-center">
-        <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl">
-          DYR SOM ER KLAR TIL <span style="color:#60a5fa">ADOPTION</span>
-        </p>
+        <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
       </div>
 
       <div>
-        <div v-for="animal in animals" :key="animal.id">
-          <p v-html="animal.name"></p>
-          <p v-html="animal.price"></p>
-          <p v-html="animal.imgURL"></p>
-          <img :src="animal.imgURL" alt="animal image" width="200" height="200">
-          <p>Animal ID: {{animal.id}}</p>
-        </div>
+        <div v-for="animal in animals" :key="animal">
+        <p class="text-black" v-html="animal.name"></p>
+        <p class="text-black" v-html="animal.price"></p>
+        <img :src="animal.imgURL" alt="post image" width="200" height="200">
+    
+        <!-- <p class="text-black">PostID: {{animal.id}}</p> -->
       </div>
+      </div>
+
+      </div>
+
+  
+      <!-- <div v-if="uploadBtnDisabled">
+        <p>No image uploaded</p>
+      </div> -->  
+    <!--   <div v-else> -->
+<!--       <button @click="testDisable()">test</button>
+ -->
+   
+
+  <!--     </div> -->
+    
+    
     </div>
-  </div>
-  </template>
+</template>
 
-  <script>
-  import useAnimals from '../modules/useAnimals.js';
+<script setup>
+import { collection, addDoc  } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { onMounted , reactive} from 'vue';
+import { db } from '../firebase.js';
+import useAnimals from '../modules/useAnimals.js';
 
-export default {
-  data() {
-    return {
-      animals: useAnimals().animals,
-    };
-  },
-  async created() {
-    const { getAnimalsData } = useAnimals();
-    await getAnimalsData();
-  },
+const { animals, getAnimalsData } = useAnimals();
+
+onMounted(() => {
+getAnimalsData();
+});
+
+let addAnimalData = reactive({
+animalName: '',
+animalPrice: '',
+imgURL: '',
+uploadBtnDisabled: true
+});
+
+const firebaseAddSingleItem = async () => {
+try {
+  await addDoc(collection(db, "animals"), {
+    name: addAnimalData.animalName,
+    price: addAnimalData.animalPrice,
+    imgURL: addAnimalData.imgURL,
+  });
+  // If you want to do something after the item is added, add it here
+} catch (error) {
+  console.error("Error adding document: ", error);
+}
+}
+
+const storage = getStorage();
+
+const uploadImg = async (event) => {
+let file = event.target.files[0];
+console.log("file", file);
+const metadata = {
+  contentType: 'image/jpeg'
 };
-  </script>
+const storageRef = ref(storage, 'images/' + file.name);
+const uploadTask = uploadBytesResumable(storageRef, file, metadata);
 
-  <style>
-  @media (min-width: 1024px) {
-    .about {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+uploadTask.on('state_changed',
+  (snapshot) => {
+    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
     }
+  },
+  (error) => {
+    switch (error.code) {
+      case 'storage/unauthorized':
+        break;
+      case 'storage/canceled':
+        break;
+      case 'storage/unknown':
+        break;
+    }
+  },
+  () => {
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+
+      addAnimalData.imgURL = downloadURL;
+      console.log("billede test: ", addAnimalData.imgURL)
+      addAnimalData.uploadBtnDisabled = false;
+    });
   }
-  
-  
-  .add-animal-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-field {
-    padding: 10px;
-    width: 200px;
-    border: 1px solid #000000;
-    margin-right: 10px;
-  }
-  
-  
-  .animal-item {
-    padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .animal-info {
-    flex: 1;
-  }
-  
-  .animal-id {
-    font-weight: bold;
-  }
-  
-  .animal-price {
-    font-style: italic;
-  }
-  </style>
+);
+}
+</script>
 
 
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>
 
 
 
