@@ -6,7 +6,7 @@
         <p class="text-center text-black pt-12 md:pt-20 lg:pt-20 pb-3 text-xl md:text-3xl lg:text-3xl"> DYR SOM ER KLAR TIL <span style="color:#60a5fa"> ADOPTION</span> </p>
       </div>
 
-      <div>
+      <div class="bg-stone-50 dark:bg-stone-50 flex flex-row lg:py-20 px-3 ">
         <div v-for="animal in animals" :key="animal">
         <p class="text-black" v-html="animal.name"></p>
         <p class="text-black" v-html="animal.price"></p>
