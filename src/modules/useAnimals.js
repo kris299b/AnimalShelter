@@ -3,10 +3,9 @@ import { ref } from 'vue'
 import { collection, onSnapshot, doc, deleteDoc, addDoc, updateDoc } from 'firebase/firestore'; //onSnapshot = in real time
 
  
-
 const useAnimals = () => {
   const animals = ref([]); // to store data from firebase
-  const animalDataRef = collection(db, 'animals');
+  const animalDataRef = collection(db, 'animals')
 
   const AddAnimalData = ref({
     animalName: "",
@@ -31,8 +30,6 @@ const useAnimals = () => {
         }
       })
     })
-  //  debugger
-    console.log("tes", animals)
   }
 
  
@@ -47,21 +44,25 @@ const useAnimals = () => {
     await addDoc(collection(db, "animals"),
         {
             animalName: AddAnimalData.value.animalName, //no longer at string, cause it's static (now write .value, beacuse its a ref)
-            animalPrice: 3000
+            animalPrice: AddAnimalData.value.animalPrice,
+            imgURL: AddAnimalData.value.imgURL
         }
     );
 
     console.log("is added")
  }
 
- const firebaseUpdateSingleItem = async(animal) => {
-    await updateDoc(doc(animalDataRef, animal.id),{
-        animalName: UpdateAnimalsData.value.animalName, //static string 
-        animalPrice: 200
-    }).then(() =>{ //.then = is a promise
-        AddAnimalData.value.animalName = '' 
-    })     
- }
+
+ const firebaseUpdateSingleItem = async (animal) => {
+  await updateDoc(doc(animalDataRef, animal.id), {
+    animalName: animal.animalName, // Update properties from the 'animal' parameter
+    animalPrice: animal.animalPrice,
+    // You can include other properties as needed
+  }).then(() => {
+    // If you want to reset the form input value, you can do so here
+    AddAnimalData.value.animalName = '';
+  });
+};
 
   return {
     getAnimalsData,

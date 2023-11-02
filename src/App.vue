@@ -43,9 +43,6 @@
                 <li>
                   <RouterLink to="admin">ADMIN</RouterLink>
                 </li>
-                <li>
-                  <RouterLink to="register">OPRET BRUGER</RouterLink>
-                </li>
                 <li>  
                   <RouterLink to="login">LOG IND</RouterLink>
                 </li>

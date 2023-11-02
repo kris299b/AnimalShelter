@@ -42,7 +42,7 @@
   export default {
     setup() {
       const audienceId = "322f56a61f"; // Replace with your Mailchimp Audience ID
-        //const apiKey = "a27677a483704d0a672cb4b800afb7f7-us21"; // Replace with your Mailchimp API Key
+      const apiKey = "a27677a483704d0a672cb4b800afb7f7-us21"; // Replace with your Mailchimp API Key
       const url = `https://us21.api.mailchimp.com/3.0/lists/${audienceId}/members`; // Corrected URL
       const email = ref('');
   
