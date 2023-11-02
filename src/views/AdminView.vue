@@ -22,7 +22,7 @@
           <input class="text-black mr-5 border-2 border-blue-400 h-8 pl-2" type="text" placeholder="Navn" v-model="addAnimalData.animalName">
           <input class="text-black mr-5 border-2 border-blue-400 h-8 pl-2" type="text" placeholder="Pris" v-model="addAnimalData.animalPrice">
           <input type="file" label="File input" @change="uploadImg">
-          <button class="bg-blue-400 font-semibold text-white px-5 py-3" @click.prevent="firebaseAddSingleItem()" >Tilføj</button> <!-- :disabled="addAnimalData.uploadBtnDisabled" -->
+          <button class="bg-blue-400 font-semibold text-white h-8 w-20 " @click.prevent="firebaseAddSingleItem()" >Tilføj</button> <!-- :disabled="addAnimalData.uploadBtnDisabled" -->
         </div>
         </div>
   
